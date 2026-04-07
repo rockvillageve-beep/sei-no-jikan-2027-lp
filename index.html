@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静の時間 — 揺れない心とからだを育てる</title>
+    <meta name="description" content="心のデトックス。整えることから、生き方を変える。忙しさに流される毎日から、一度立ち止まりませんか。">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        wabi: {
+                            50: '#f9f8f6',
+                            100: '#f1efe9',
+                            200: '#e1dcd1',
+                            300: '#cac1af',
+                            400: '#b0a088',
+                            500: '#9b876a',
+                            600: '#836d52',
+                            700: '#6c5945',
+                            800: '#5a4b3c',
+                            900: '#4a3e33',
+                            950: '#27201a',
+                        },
+                        matcha: {
+                            50: '#f5f7f3',
+                            100: '#e7ede2',
+                            200: '#cedbc4',
+                            300: '#abc19b',
+                            400: '#84a070',
+                            500: '#64824e',
+                            600: '#4e673a',
+                            700: '#405232',
+                            800: '#35432a',
+                            900: '#2d3725',
+                            950: '#161e11',
+                        }
+                    },
+                    fontFamily: {
+                        mincho: ['"Shippori Mincho"', '"Noto Serif JP"', 'serif'],
+                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                        '22': '5.5rem',
+                        '30': '7.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;600&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: #f9f8f6;
+            color: #27201a;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .dark body {
+            background-color: #1a1816;
+            color: #e1dcd1;
+        }
+
+        .font-mincho {
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            letter-spacing: 0.2em;
+        }
+
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b0a088' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .dark .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e1dcd1' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .blob-shape {
+            clip-path: path('M45.7,-76.4C58.9,-69.3,69.1,-55.4,76.6,-40.3C84.1,-25.1,88.9,-8.6,87.6,7.6C86.3,23.8,79,39.7,68.2,52.3C57.4,64.9,43.2,74.1,27.6,80.1C12,86.1,-4.9,88.9,-20.9,85.6C-36.9,82.3,-52.1,72.9,-63.5,60.2C-74.9,47.5,-82.5,31.4,-85.5,14.6C-88.5,-2.2,-86.9,-19.7,-79.3,-34.5C-71.7,-49.3,-58.1,-61.4,-43.3,-68.2C-28.4,-75.1,-14.2,-76.7,1.4,-79.2C16.9,-81.7,32.4,-83.6,45.7,-76.4Z');
+        }
+        
+        .blob-shape-2 {
+            clip-path: path('M38.8,-63.4C52.6,-56.9,67.6,-50.2,77.3,-38.3C86.9,-26.3,91.3,-9,88.2,7.1C85.1,23.3,74.5,38.3,61.9,50C49.3,61.6,34.8,69.9,19.3,74.2C3.8,78.5,-12.6,78.8,-28.3,74.3C-44.1,69.7,-59.2,60.3,-69.5,46.7C-79.9,33.1,-85.4,15.3,-84.3,-1.9C-83.3,-19.1,-75.8,-35.8,-63.9,-48.1C-52,-60.4,-35.7,-68.2,-21.2,-72.2C-6.8,-76.2,5.8,-76.3,19.1,-72.1C32.4,-67.9,46.4,-59.3,53.4,-55.8Z');
+        }
+
+        .img-mask-circle {
+            clip-path: circle(48% at 50% 50%);
+        }
+
+        /* Brush stroke effect */
+        .brush-stroke {
+            position: relative;
+            display: inline-block;
+        }
+        .brush-stroke::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(164, 192, 144, 0.4);
+            z-index: -1;
+            transform: rotate(-2deg);
+            border-radius: 2px;
+        }
+        .dark .brush-stroke::after {
+            background-color: rgba(100, 130, 78, 0.4);
+        }
+    </style>
+<script src="https://felo.ai/js/iframe.js?v=1775592764418"></script>
+ <style>
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: #bfc5ce transparent !important;
+}
+*::-webkit-scrollbar {
+  width: 6px !important;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #bfc5ce !important;
+  border-radius: 9999px !important;
+}
+*::-webkit-scrollbar-track {
+  background-color: transparent !important;
+  border-radius: 9999px !important;
+}
+</style></head>
+<body class="antialiased overflow-x-hidden selection:bg-matcha-200 selection:text-matcha-900 dark:selection:bg-matcha-800 dark:selection:text-matcha-50"><body class="antialiased overflow-x-hidden selection:bg-matcha-200 selection:text-matcha-900 dark:selection:bg-matcha-800 dark:selection:text-matcha-50" contenteditable="false" spellcheck="false" style="cursor: default;">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 dark:bg-[#1a1816]/90 backdrop-blur-md shadow-sm py-3" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center" data-element-id="de5bd064-6015-4dff-a50b-bae165cc8ca8">
+            <div class="text-xl font-mincho font-semibold tracking-widest flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-matcha-500"></span>
+                静の時間
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <a href="#about" class="hidden md:block text-sm tracking-wide hover:text-matcha-600 dark:hover:text-matcha-300 transition-colors">コンセプト</a>
+                <a href="#programs" class="hidden md:block text-sm tracking-wide hover:text-matcha-600 dark:hover:text-matcha-300 transition-colors">体験内容</a>
+                <a href="#info" class="hidden md:block text-sm tracking-wide hover:text-matcha-600 dark:hover:text-matcha-300 transition-colors">開催概要</a>
+                
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon text-lg dark:hidden"></i>
+                    <i class="fas fa-sun text-lg hidden dark:block text-yellow-300"></i>
+                </button>
+                
+                <a href="https://x.gd/Zdy3g" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium tracking-wider text-white bg-wabi-800 hover:bg-wabi-900 dark:bg-wabi-700 dark:hover:bg-wabi-600 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    参加する
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Japanese Whitespace / Zen Style) -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden hero-pattern">
+        <!-- Abstract background elements -->
+        <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-matcha-100/50 dark:bg-matcha-900/20 rounded-full blur-3xl opacity-50 -z-10 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-wabi-200/40 dark:bg-wabi-800/20 rounded-full blur-3xl opacity-50 -z-10 -translate-x-1/4 translate-y-1/4"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 w-full flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-24 relative z-10">
+            
+            <!-- Left: Text Content -->
+            <div class="w-full md:w-1/2 flex flex-col items-start fade-in-up visible">
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-wabi-300 dark:border-wabi-600 text-xs tracking-[0.2em] mb-8 bg-white/50 dark:bg-black/20 backdrop-blur-sm">
+                    <span class="text-matcha-600 dark:text-matcha-400"><i class="fas fa-leaf"></i></span>
+                    心のデトックス
+                </div>
+                
+                <h1 class="font-mincho text-4xl md:text-5xl lg:text-6xl leading-[1.4] mb-6 font-medium text-wabi-950 dark:text-wabi-50">
+                    整えることから、<br>
+                    <span class="brush-stroke">生き方を変える</span>
+                </h1>
+                
+                <div class="pl-4 border-l-2 border-matcha-400/50 dark:border-matcha-600/50 mb-10">
+                    <p class="text-xl md:text-2xl font-mincho text-wabi-800 dark:text-wabi-200 mb-2">
+                        静の時間
+                    </p>
+                    <p class="text-sm md:text-base tracking-[0.15em] text-wabi-600 dark:text-wabi-400">
+                        — 揺れない心とからだを育てる —
+                    </p>
+                </div>
+                
+                <div class="space-y-4 text-wabi-700 dark:text-wabi-300 leading-relaxed mb-12 max-w-md font-light">
+                    <p>忙しさに流される毎日から、<br>一度立ち止まりませんか。</p>
+                    <p>ただ「頑張る」のではなく、<br>整えることで、本来の自分に戻る時間を。</p>
+                </div>
+                
+                <a href="https://x.gd/Zdy3g" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-[0.15em] text-white bg-wabi-900 dark:bg-wabi-800 overflow-hidden rounded-none transition-all duration-300 hover:shadow-xl hover:shadow-wabi-900/20">
+                    <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                    <span class="relative z-10 flex items-center gap-3">
+                        参加を申し込む
+                        <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Right: Visual -->
+            <div class="w-full md:w-1/2 flex justify-center relative fade-in-up visible" style="transition-delay: 0.2s;">
+                <div class="relative w-[300px] h-[400px] md:w-[400px] md:h-[550px]">
+                    <!-- Using SVG as a stylized representation since image URL is generic -->
+                    <div class="w-full h-full bg-wabi-100 dark:bg-wabi-900 overflow-hidden relative shadow-2xl" style="border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;">
+                        <img src="https://api-ext.felo.ai/htmlPPT/image/08762dcd-5240-4959-8cde-c2915ca2bba8" alt="日本庭園での瞑想的な歩行" class="w-full h-full object-cover mix-blend-multiply dark:mix-blend-luminosity opacity-90 transition-transform duration-700 hover:scale-105" data-element-id="81c27fd2-6044-4f9b-82ad-ec73b1feaade" data-original-src="https://api-ext.felo.ai/htmlPPT/image/08762dcd-5240-4959-8cde-c2915ca2bba8">
+                    </div>
+                    
+                    <!-- Decorative element -->
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-matcha-200 dark:bg-matcha-800 rounded-full mix-blend-multiply dark:mix-blend-screen opacity-70 blur-xl"></div>
+                    <div class="absolute -top-6 -right-6 w-40 h-40 bg-wabi-300 dark:bg-wabi-700 rounded-full mix-blend-multiply dark:mix-blend-screen opacity-50 blur-xl"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+            <span class="text-xs tracking-[0.2em] vertical-text font-light">SCROLL</span>
+            <div class="w-[1px] h-12 bg-current relative overflow-hidden">
+                <div class="w-full h-full bg-wabi-950 dark:bg-wabi-50 absolute top-0 left-0 animate-[scroll-down_2s_ease-in-out_infinite]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem / Empathy Section (Grid/List Layout) -->
+    <section class="py-24 md:py-32 relative bg-white dark:bg-[#1f1d1a]" data-element-id="32232b95-52e8-49c2-8c6c-43b2997592b3">
+        <div class="max-w-4xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-16 fade-in-up visible">
+                <span class="text-matcha-600 dark:text-matcha-400 text-sm tracking-[0.2em] block mb-4 font-medium">EMPATHY</span>
+                <h2 class="font-mincho text-3xl md:text-4xl text-wabi-900 dark:text-wabi-100">こんな状態、感じていませんか？</h2>
+                <div class="w-12 h-[1px] bg-wabi-300 dark:bg-wabi-600 mx-auto mt-8"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 fade-in-up visible">
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4 p-6 bg-wabi-50 dark:bg-wabi-900/30 rounded-2xl transition-all duration-300 hover:shadow-md">
+                        <div class="mt-1 text-matcha-500"><i class="fa-solid fa-battery-quarter"></i></div>
+                        <p class="text-lg text-wabi-800 dark:text-wabi-200">なんとなく疲れが抜けない</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-6 bg-wabi-50 dark:bg-wabi-900/30 rounded-2xl transition-all duration-300 hover:shadow-md">
+                        <div class="mt-1 text-matcha-500"><i class="fa-solid fa-water"></i></div>
+                        <p class="text-lg text-wabi-800 dark:text-wabi-200">気持ちが落ち着かない</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-6 bg-wabi-50 dark:bg-wabi-900/30 rounded-2xl transition-all duration-300 hover:shadow-md">
+                        <div class="mt-1 text-matcha-500"><i class="fa-solid fa-brain"></i></div>
+                        <p class="text-lg text-wabi-800 dark:text-wabi-200">常に頭が忙しい</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4 p-6 bg-wabi-50 dark:bg-wabi-900/30 rounded-2xl transition-all duration-300 hover:shadow-md">
+                        <div class="mt-1 text-matcha-500"><i class="fa-regular fa-clock"></i></div>
+                        <p class="text-lg text-wabi-800 dark:text-wabi-200">自分の時間が取れていない</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-6 bg-wabi-50 dark:bg-wabi-900/30 rounded-2xl transition-all duration-300 hover:shadow-md">
+                        <div class="mt-1 text-matcha-500"><i class="fa-solid fa-compass"></i></div>
+                        <p class="text-lg text-wabi-800 dark:text-wabi-200">「このままでいいのか」と感じる</p>
+                    </div>
+                    
+                    <div class="p-6 border border-matcha-200 dark:border-matcha-800 rounded-2xl bg-matcha-50/50 dark:bg-matcha-900/10 mt-8 md:mt-0 h-full flex flex-col justify-center" data-element-id="b225365d-0125-4b13-a5ed-ded750b5695b" style="position: relative; width: 376px; height: 155.5px; top: 0px; left: 0px;">
+                        <p class="font-mincho text-xl leading-relaxed text-wabi-900 dark:text-wabi-100 text-center" data-element-id="d40524e0-9e05-4877-b9f8-1dd909142dce">
+                            それは「頑張り不足」ではなく、<br>
+                            <span class="text-matcha-700 dark:text-matcha-400 font-medium" data-element-id="6c93340f-6f9c-41c3-8931-f89a5eac9d09">整える時間</span>が足りていないだけかもしれません。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Section (Editorial Layout) -->
+    <section id="about" class="py-24 md:py-32 bg-wabi-50 dark:bg-wabi-950 relative">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-wabi-300 dark:via-wabi-700 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-16 lg:gap-24" data-element-id="2841cdeb-defb-4af3-834a-ada75ed05b9e">
+            
+            <div class="w-full lg:w-5/12 order-2 lg:order-1 fade-in-up visible" data-element-id="6bab5720-f49c-43ce-805c-cff36a64686b">
+                <div class="relative p-4 bg-white dark:bg-[#1a1816] shadow-xl">
+                    <img src="https://api-ext.felo.ai/htmlPPT/image/07c69dcc-7ef2-4d31-a6fa-4e7fc7509e79" alt="静かに瞑想する女性のイラスト" class="w-full h-auto object-cover opacity-90 dark:opacity-80" data-element-id="7d3ab3af-98cc-4d78-95c3-38d6707a708e" data-original-src="https://api-ext.felo.ai/htmlPPT/image/07c69dcc-7ef2-4d31-a6fa-4e7fc7509e79">
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-matcha-100 dark:bg-matcha-900/50 -z-10"></div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-7/12 order-1 lg:order-2 fade-in-up visible">
+                <span class="text-matcha-600 dark:text-matcha-400 text-sm tracking-[0.2em] block mb-6 font-medium">CONCEPT</span>
+                <h2 class="font-mincho text-3xl md:text-5xl leading-[1.4] mb-10 text-wabi-900 dark:text-wabi-100">
+                    静かに整え、<br>
+                    静かにひらく。
+                </h2>
+                
+                <div class="space-y-6 text-lg text-wabi-700 dark:text-wabi-300 font-light leading-relaxed">
+                    <p>この時間では、外に向いていた意識を内側へ戻し、</p>
+                    
+                    <ul class="flex gap-8 my-8 font-mincho text-xl text-wabi-900 dark:text-wabi-100">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-matcha-500 rounded-full"></span> 身体</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-matcha-500 rounded-full"></span> 呼吸</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-matcha-500 rounded-full"></span> 意識</li>
+                    </ul>
+                    
+                    <p>を整えていきます。</p>
+                    
+                    <div class="pt-6 border-t border-wabi-200 dark:border-wabi-800">
+                        <p class="font-mincho text-xl">無理に変わる必要はありません。<br>ただ整うことで、自然と変化が起きていきます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs (The Zig-Zag) -->
+    <section id="programs" class="py-24 md:py-32 bg-white dark:bg-[#1f1d1a]">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-20 fade-in-up visible">
+                <span class="text-matcha-600 dark:text-matcha-400 text-sm tracking-[0.2em] block mb-4 font-medium">PROGRAMS</span>
+                <h2 class="font-mincho text-3xl md:text-4xl text-wabi-900 dark:text-wabi-100 mb-6">体験内容（3つの柱）</h2>
+                <p class="text-wabi-600 dark:text-wabi-400 font-light">五感を通じて深く整う体験を</p>
+            </div>
+
+            <div class="space-y-32">
+                <!-- Program 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20 fade-in-up visible">
+                    <div class="w-full md:w-1/2" data-element-id="8726935f-585a-4593-891b-04c1963da323">
+                        <div class="relative overflow-hidden aspect-[4/3] rounded-sm group">
+                            <img src="https://api-ext.felo.ai/htmlPPT/image/d717b9e1-687d-427c-8a58-507bbde3bcfb" alt="コアボディワーク" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-element-id="8726935f-585a-4593-891b-04c1963da323" data-original-src="https://api-ext.felo.ai/htmlPPT/image/d717b9e1-687d-427c-8a58-507bbde3bcfb">
+                            <div class="absolute inset-0 bg-wabi-900/10 mix-blend-multiply"></div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <div class="flex items-baseline gap-4 mb-4">
+                            <span class="text-4xl font-mincho text-matcha-300 dark:text-matcha-700/50">01</span>
+                            <h3 class="text-2xl md:text-3xl font-mincho text-wabi-900 dark:text-wabi-100">コアボディワーク</h3>
+                        </div>
+                        <div class="w-12 h-px bg-wabi-300 dark:bg-wabi-600 mb-6"></div>
+                        <p class="text-lg text-wabi-700 dark:text-wabi-300 leading-relaxed font-light">
+                            歩く禅をベースに、<br>身体の軸を整えるワーク。<br><br>
+                            姿勢・重心・呼吸を整えることで、<br>心の安定にもつながります。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20 fade-in-up visible">
+                    <div class="w-full md:w-1/2" data-element-id="8d9a33e9-cc0c-4915-81cc-9baeb7488e56">
+                        <div class="relative overflow-hidden aspect-[4/3] rounded-sm group">
+                            <img src="https://api-ext.felo.ai/htmlPPT/image/58abefd9-3bf9-43e9-86a7-7e30cfcd6ddc" alt="やさしい護身" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-element-id="8d9a33e9-cc0c-4915-81cc-9baeb7488e56" data-original-src="https://api-ext.felo.ai/htmlPPT/image/58abefd9-3bf9-43e9-86a7-7e30cfcd6ddc">
+                            <div class="absolute inset-0 bg-wabi-900/10 mix-blend-multiply"></div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex flex-col md:items-end md:text-right">
+                        <div class="flex items-baseline gap-4 mb-4 flex-row-reverse md:flex-row">
+                            <span class="text-4xl font-mincho text-matcha-300 dark:text-matcha-700/50">02</span>
+                            <h3 class="text-2xl md:text-3xl font-mincho text-wabi-900 dark:text-wabi-100">やさしい護身</h3>
+                        </div>
+                        <div class="w-12 h-px bg-wabi-300 dark:bg-wabi-600 mb-6"></div>
+                        <p class="text-lg text-wabi-700 dark:text-wabi-300 leading-relaxed font-light">
+                            力に頼らず、自分を守るための技術。<br><br>
+                            緊張や恐怖に支配されず、<br>落ち着いて対処できる感覚を身につけます。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20 fade-in-up visible">
+                    <div class="w-full md:w-1/2 relative">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="aspect-square overflow-hidden rounded-sm group translate-y-8">
+                                <img src="https://api-ext.felo.ai/htmlPPT/image/86ce3bb6-2042-4efd-a2bf-a1e6da08c2a1" alt="茶道の所作" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-element-id="9d3ce98c-cb7f-46b2-bc20-5dcc986b4de3" data-original-src="https://api-ext.felo.ai/htmlPPT/image/86ce3bb6-2042-4efd-a2bf-a1e6da08c2a1">
+                            </div>
+                            <div class="aspect-square overflow-hidden rounded-sm group">
+                                <img src="https://api-ext.felo.ai/htmlPPT/image/9a4058c8-2887-431c-a097-bb8562f599bd" alt="和菓子と抹茶" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-element-id="847a001b-bc49-45e2-9f21-3d673151a514" data-original-src="https://api-ext.felo.ai/htmlPPT/image/9a4058c8-2887-431c-a097-bb8562f599bd">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 mt-8 md:mt-0">
+                        <div class="flex items-baseline gap-4 mb-4">
+                            <span class="text-4xl font-mincho text-matcha-300 dark:text-matcha-700/50">03</span>
+                            <h3 class="text-2xl md:text-3xl font-mincho text-wabi-900 dark:text-wabi-100">ミニ茶会</h3>
+                        </div>
+                        <div class="w-12 h-px bg-wabi-300 dark:bg-wabi-600 mb-6"></div>
+                        <p class="text-lg text-wabi-700 dark:text-wabi-300 leading-relaxed font-light">
+                            お茶室での静かな時間。<br><br>
+                            茶道の点前の中で、<br>和菓子と抹茶をいただきながら、<br><br>
+                            五感を通じて深く整う体験を。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Changes/Benefits (Minimalist List) -->
+    <section class="py-24 bg-matcha-50 dark:bg-matcha-950/30 border-y border-matcha-100 dark:border-matcha-900/50">
+        <div class="max-w-4xl mx-auto px-6 md:px-12 text-center fade-in-up visible">
+            <h2 class="font-mincho text-2xl md:text-3xl mb-12 text-wabi-900 dark:text-wabi-100">この時間を通して、<br class="md:hidden">こんな変化が期待できます</h2>
+            
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+                <span class="px-6 py-3 bg-white dark:bg-[#1a1816] rounded-full shadow-sm text-wabi-800 dark:text-wabi-200 border border-wabi-100 dark:border-wabi-800/50 flex items-center gap-2"><i class="fa-solid fa-check text-matcha-500 text-sm"></i>思考がクリアになる</span>
+                <span class="px-6 py-3 bg-white dark:bg-[#1a1816] rounded-full shadow-sm text-wabi-800 dark:text-wabi-200 border border-wabi-100 dark:border-wabi-800/50 flex items-center gap-2"><i class="fa-solid fa-check text-matcha-500 text-sm"></i>呼吸が深くなる</span>
+                <span class="px-6 py-3 bg-white dark:bg-[#1a1816] rounded-full shadow-sm text-wabi-800 dark:text-wabi-200 border border-wabi-100 dark:border-wabi-800/50 flex items-center gap-2"><i class="fa-solid fa-check text-matcha-500 text-sm"></i>体の緊張がほどける</span>
+                <span class="px-6 py-3 bg-white dark:bg-[#1a1816] rounded-full shadow-sm text-wabi-800 dark:text-wabi-200 border border-wabi-100 dark:border-wabi-800/50 flex items-center gap-2"><i class="fa-solid fa-check text-matcha-500 text-sm"></i>自分の軸を感じられる</span>
+                <span class="px-6 py-3 bg-white dark:bg-[#1a1816] rounded-full shadow-sm text-wabi-800 dark:text-wabi-200 border border-wabi-100 dark:border-wabi-800/50 flex items-center gap-2"><i class="fa-solid fa-check text-matcha-500 text-sm"></i>日常のストレスに振り回されにくくなる</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section & Message -->
+    <section id="info" class="py-24 md:py-32 bg-wabi-50 dark:bg-wabi-950 relative" data-element-id="f9f3156b-1aaf-43e0-af79-f27c8fd3a481">
+        <div class="max-w-5xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-16 lg:gap-24">
+            
+            <!-- Message -->
+            <div class="w-full lg:w-1/2 fade-in-up flex flex-col justify-center visible">
+                <div class="mb-12 relative">
+                    <svg class="absolute -top-8 -left-8 w-16 h-16 text-wabi-200 dark:text-wabi-800" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                        <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" style="pointer-events: none;"></path>
+                    </svg>
+                    <p class="font-mincho text-2xl md:text-3xl leading-[2] text-wabi-900 dark:text-wabi-100 relative z-10 pl-6 border-l-2 border-matcha-300 dark:border-matcha-700" data-element-id="e717811d-eaed-46b8-88be-7705ff34992c" style="width: 514px; height: 396px; top: 44px; left: 2px;">
+                        この時間は、<br>
+                        何かを「学ぶ場」ではありません。<br><br>
+                        ただ、<br>
+                        自分に戻るための時間です。<br><br>
+                        日常から少し離れて、<br>
+                        静かに整えてみませんか。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Event Details -->
+            <div class="w-full lg:w-1/2 fade-in-up visible" data-element-id="9a1b89ef-cae5-48c8-a77e-065574cd4974">
+                <div class="bg-white dark:bg-[#1a1816] p-8 md:p-10 shadow-lg border border-wabi-100 dark:border-wabi-800/50 relative overflow-hidden" style="width: 475px; height: 454px; top: 0px; left: 0px;">
+                    <!-- Decor -->
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-matcha-50 dark:bg-matcha-900/20 rounded-bl-full"></div>
+                    
+                    <h3 class="font-mincho text-2xl mb-8 text-wabi-900 dark:text-wabi-100 border-b border-wabi-200 dark:border-wabi-800 pb-4">開催概要</h3>
+                    
+                    <dl class="space-y-6">
+                        <div class="flex flex-col sm:flex-row sm:gap-6 border-b border-wabi-100 dark:border-wabi-800/50 pb-4">
+                            <dt class="text-sm tracking-[0.2em] text-wabi-500 w-24 mb-2 sm:mb-0 mt-1">イベント名</dt>
+                            <dd class="text-lg font-medium text-wabi-900 dark:text-wabi-100">静の時間</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:gap-6 border-b border-wabi-100 dark:border-wabi-800/50 pb-4">
+                            <dt class="text-sm tracking-[0.2em] text-wabi-500 w-24 mb-2 sm:mb-0 mt-1">参加費</dt>
+                            <dd class="text-lg text-wabi-900 dark:text-wabi-100">3,000円</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:gap-6 border-b border-wabi-100 dark:border-wabi-800/50 pb-4">
+                            <dt class="text-sm tracking-[0.2em] text-wabi-500 w-24 mb-2 sm:mb-0 mt-1">開催日程</dt>
+                            <dd class="text-lg text-wabi-900 dark:text-wabi-100" data-element-id="6f284dec-b950-453b-aa65-3e96859619e9">
+                                5月16日 <span class="text-wabi-300 mx-2">|</span> 
+                                9月26日 <span class="text-wabi-300 mx-2">|</span> 
+                                11月21日
+                            </dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:gap-6">
+                            <dt class="text-sm tracking-[0.2em] text-wabi-500 w-24 mb-2 sm:mb-0 mt-1">場所</dt>
+                            <dd class="text-lg text-wabi-900 dark:text-wabi-100">
+                                市川松戸座禅道場<br>
+                                <span class="text-base text-wabi-600 dark:text-wabi-400 mt-1 block">千葉県市川市国府台6-1-16</span>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-32 relative overflow-hidden bg-wabi-900 dark:bg-[#121110] text-wabi-50">
+        <!-- Abstract dark background elements -->
+        <div class="absolute inset-0 opacity-20 hero-pattern" style="filter: invert(1);"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[300px] bg-matcha-900/50 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-3xl mx-auto px-6 text-center relative z-10 fade-in-up visible">
+            <h2 class="font-mincho text-3xl md:text-5xl mb-8">静かな時間を、ご一緒に。</h2>
+            <p class="text-lg md:text-xl text-wabi-200 font-light mb-4">定員に限りがあります。</p>
+            <p class="text-wabi-300 font-light mb-12">少人数で丁寧に行うため、<br>お早めにお申し込みください。</p>
+            
+            <a href="https://x.gd/Zdy3g" target="_blank" rel="noopener noreferrer" class="group inline-flex flex-col items-center gap-4">
+                <div class="relative flex items-center justify-center px-12 py-5 text-lg font-medium tracking-[0.15em] text-wabi-950 bg-wabi-50 hover:bg-white transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)]">
+                    <span class="relative z-10 flex items-center gap-3">
+                        参加を申し込む
+                        <i class="fas fa-arrow-right text-sm transition-transform duration-300 group-hover:translate-x-2"></i>
+                    </span>
+                </div>
+                <span class="text-xs text-wabi-400 tracking-wider">申込みフォームへ移動します</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white dark:bg-black border-t border-wabi-100 dark:border-wabi-900/50 text-center" data-element-id="223b8cb5-d441-457f-8e6d-21674d6edee4">
+        <div class="max-w-7xl mx-auto px-6" data-element-id="e19eef36-d418-4ada-823d-4d5d9805d06f">
+            <div class="font-mincho text-xl mb-6 text-wabi-900 dark:text-wabi-100 flex items-center justify-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-matcha-500"></span>
+                静の時間
+            </div>
+            
+            <div class="flex justify-center gap-6 mb-8">
+                
+                
+            </div>
+
+            <div class="text-sm text-wabi-400 dark:text-wabi-600 font-light space-y-2" data-element-id="73708a9a-7a86-4eb8-9d63-f7cca3fd5345" style="position: relative; top: -36px; left: -2px;">
+                <p data-element-id="8ceb0b47-5692-40ee-a62a-9cbb2b5972e8">Designed by 岩村剛</p>
+                <p data-element-id="65e14695-6419-464a-843f-985c6848c5cf">© 2027 静の時間 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Dark Mode Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved user preference, if any, on load of the website
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/90', 'dark:bg-[#1a1816]/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('bg-white/90', 'dark:bg-[#1a1816]/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Keyframe animation setup in JS (could also be in CSS)
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes scroll-down {
+                0% { transform: translateY(-100%); }
+                50% { transform: translateY(0); }
+                100% { transform: translateY(100%); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+
+</body></body></body></body></body></body></body></body></body></body></body></body>
+</html>
